@@ -3,7 +3,9 @@
       <h1>博客展示</h1>
       <input type="text" placeholder="搜索" v-model="search">
       <div id="single-blog" v-for = "(blog,index) in filterBlogs" :key ='index' >
-          <h3 v-rainbow>{{blog.title}}</h3>
+          <router-link :to="'/blog/' + blog.id">
+              <h3 v-rainbow>{{blog.title}}</h3>
+          </router-link>
           <p>{{blog.body}}</p>
       </div>
   </div>
