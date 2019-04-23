@@ -22,6 +22,22 @@ export default {
         .then(function(data){
             this.blogArray = data.body.slice(0,10)
         })
+    },
+    directives:{
+        'rainbow':{
+            bind(el, bingding, vnode){
+                el.style.color = "#" + Math.random().toString(16).slice(2,8)
+            }
+        },
+        'theme':{
+            bind(el,binding, vnode){
+                if(binding.value == 'wild'){
+                    el.style.maxWidth =='1260px'
+                }else if(binding.value == 'narrow'){
+                    el.style.maxWidth =='560px'
+                }
+            }
+        }
     }
   
 }
