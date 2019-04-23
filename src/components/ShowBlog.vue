@@ -1,7 +1,8 @@
 <template>
   <div id="show-blog" v-theme = "'wild'">
       <h1>博客展示</h1>
-      <div id="single-blog" v-for = "(blog,index) in blogArray" :key ='index' >
+      <input type="text" placeholder="搜索" v-model="search">
+      <div id="single-blog" v-for = "(blog,index) in filterBlogs" :key ='index' >
           <h3 v-rainbow>{{blog.title}}</h3>
           <p>{{blog.body}}</p>
       </div>
@@ -15,6 +16,7 @@ export default {
     data(){
         return {
             blogArray:[],
+            search:'',
         }
     },
     created(){
@@ -38,6 +40,14 @@ export default {
                 }
             }
         }
+    },
+    computed:{
+        filterBlogs(){
+            return this.blogArray.filter(blog =>{
+                return blog.title.match(this.search) 
+            })
+            }
+        
     }
   
 }
